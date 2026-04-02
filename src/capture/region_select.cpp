@@ -68,8 +68,9 @@ void region_select::on_action(int action) {
         notify::send("LibreShot", "Screenshot copied to clipboard.");
         on_cancel();
     } else if (action == action_save) {
-        file_util::save_screenshot(nullptr, final_image());
+        auto img = final_image();
         on_cancel();
+        file_util::save_screenshot(nullptr, img);
     } else if (action == action_close) {
         on_cancel();
     } else if (action == action_undo) {

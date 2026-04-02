@@ -12,6 +12,8 @@ QList<btn_entry> toolbar_data::tools(QRect sel, QSize screen) {
 
     if (x + toolbar_btn_w + toolbar_gap > screen.width())
         x = sel.left() - toolbar_btn_w - toolbar_gap;
+    if (x < edge_margin)
+        x = sel.right() - toolbar_btn_w - edge_margin;
 
     if (y + tool_h > screen.height())
         y = screen.height() - tool_h - edge_margin;
@@ -43,6 +45,8 @@ QList<btn_entry> toolbar_data::actions(QRect sel, QSize screen) {
 
     if (y + action_btn_h + toolbar_gap > screen.height())
         y = sel.top() - action_btn_h - toolbar_gap;
+    if (y < edge_margin)
+        y = sel.bottom() - action_btn_h - edge_margin;
 
     if (x < edge_margin) x = edge_margin;
     if (x + bar_w > screen.width())
